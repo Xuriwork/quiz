@@ -10,7 +10,7 @@ import { ResultComponent } from './result/result.component';
   declarations: [
     AppComponent,
     QuizComponent,
-    ResultComponent
+    ResultComponent,
   ],
   imports: [
     BrowserModule,
