@@ -1,0 +1,30 @@
+<div class="result-component">
+  <div *ngIf="numberOfCorrectAnswers === 3; else badScore">
+    <img src="../../assets/trophy.svg" alt="Trophy icon" />
+    <h1>Congrats, it's time to go to Hogwarts!</h1>
+    <p class="quiz-completed-successfully-text">Quiz completed successfully.</p>
+    <p class="questions-correct-text">
+      You got
+      <span class="correct-answers"
+        >{{ numberOfCorrectAnswers }} out of 3 questions</span
+      >
+      correct.
+    </p>
+    <button (click)="handleRetakeQuiz()" class="retake-button">Retake</button>
+  </div>
+  <ng-template #badScore>
+    <div>
+      <span role="img">😞</span>
+      <h1>Ah, bollocks. <br> Better luck next time.</h1>
+      <p class="quiz-completed-successfully-text">Quiz completed successfully.</p>
+      <p class="questions-correct-text">
+        You got
+        <span class="correct-answers"
+          >{{ numberOfCorrectAnswers }} out of 3 questions</span
+        >
+        correct.
+      </p>
+      <button (click)="handleRetakeQuiz()" class="retake-button">Retake</button>
+    </div>
+  </ng-template>
+</div>

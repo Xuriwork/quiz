@@ -1,1 +1,236 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+%flex-complete-center-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.app-component {
+  height: 100%;
+}
+
+.quiz-component,
+.result-component {
+  @extend %flex-complete-center-column;
+  height: 100%;
+}
+
+.quiz-component {
+  > div {
+    max-width: 460px;
+    width: 95%;
+  }
+
+  .question-card {
+    @extend %flex-complete-center-column;
+    background-color: #ffe388;
+    color: #765e41;
+    width: 100%;
+    height: 300px;
+    font-weight: 600;
+    font-size: 1.4em;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    -webkit-box-shadow: 0 1px 2px #ffedb4;
+    -moz-box-shadow: 0 2px 1px#ffedb4;
+    box-shadow: 0 3px 8px #ffedb4;
+
+    .card-progress-indicator {
+      position: absolute;
+      top: -17px;
+      padding: 8px 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      font-size: 0.75em;
+      -webkit-box-shadow: 0 1px 4px #524f2e1c;
+      -moz-box-shadow: 0 1px 4px #524f2e1c;
+      box-shadow: 0 1px 4px #524f2e1c;
+    }
+  }
+
+  .options-list {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+
+    button {
+      border: 1px solid #17b978;
+      color: #17b978;
+      padding: 12px;
+      width: 100%;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-box-shadow: 0 2px 6px #55cc9c1f;
+      -moz-box-shadow: 0 2px 6px #55cc9c1f;
+      box-shadow: 0 1px 10px #55cc9c1f;
+      opacity: 0;
+
+      &.animated {
+        animation-name: fadeInDown;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+
+        &:nth-child(2) {
+          animation-delay: 0.3s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.6s;
+        }
+      }
+
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translate3d(0, -40%, 0);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      &:hover {
+        background-color: #65fcc046;
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 10px;
+      }
+
+      &.correct-answer {
+        border: 1px solid #17b978;
+        background-image: linear-gradient(120deg, #3deba5 0%, #3bce93 100%);
+        color: #ffffff;
+        -webkit-box-shadow: 0 2px 6px #32da97;
+        -moz-box-shadow: 0 2px 6px #32da97;
+        box-shadow: 0 2px 6px #32da97;
+      }
+
+      &.wrong-answer {
+        border: 1px solid #af3939;
+        color: #ffffff;
+        background-image: linear-gradient(120deg, #f19a9a 0%, #dd5353 100%);
+        -webkit-box-shadow: 0 1px 2px transparent;
+        -moz-box-shadow: 0 1px 2px transparent;
+        box-shadow: 0 1px 2px transparent;
+      }
+    }
+  }
+}
+
+.progress {
+  background: rgba(255, 255, 255, 0.1);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 3px;
+  display: flex;
+  height: 15px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.progress-value {
+  animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px #fff;
+  border-radius: 100px;
+  background: #fc6c6c;
+  height: 8px;
+  width: 0;
+}
+
+@keyframes load {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.result-component {
+  > div {
+    @extend %flex-complete-center-column;
+    width: 95%;
+    max-width: 350px;
+    height: 450px;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+    text-align: center;
+    color: #2e2e2e;
+
+    img {
+      width: 90px;
+      margin-bottom: 15px;
+    }
+
+    span[role="img"] {
+      font-size: 5em;
+    }
+
+    h1 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .quiz-completed-successfully-text {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .questions-correct-text {
+      margin-top: 5px;
+    }
+
+    .retake-button {
+      margin-top: 15px;
+      padding: 10px 40px;
+      border-radius: 5px;
+      background-image: linear-gradient(120deg, #ffb89d 0%, #ffa581 100%);
+      -webkit-box-shadow: 0 4px 8px #f8c5b0;
+      -moz-box-shadow: 0 4px 8px #f8c5b0;
+      box-shadow: 0 4px 8px #f8c5b0;
+      border: 1px solid #ff8a5c;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    span.correct-answers {
+      color: #17b978;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<div class="quiz-component" *ngIf="questions[quizProgress]">
+  <div>
+    <div *ngIf="displayProgressBar" class="progress">
+      <div class="progress-value"></div>
+    </div>
+    <div>
+      <div class="question-card">
+        <span class="card-progress-indicator">{{ quizProgress + 1 }} / 3</span>
+        <p>{{ questions[quizProgress].question }}</p>
+      </div>
+      <div class="options-container">
+        <div class="options-list">
+          <ng-container
+            *ngFor="
+              let option of questions[quizProgress].options;
+              let i = index
+            "
+          >
+            <button
+              [disabled]="buttonIsDisabled"
+              (click)="handlePickAnswer(option.answerLetter, i)"
+              [ngClass]="{
+                'correct-answer':
+                  questions[quizProgress].correctAnswer ===
+                    option.answerLetter && selectedChoiceIsCorrect,
+                'wrong-answer': selectedChoiceLetter === option.answerLetter
+              }"
+              class="options-item"
+            >
+              {{ option.answerText }}
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
