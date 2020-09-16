@@ -48,7 +48,7 @@ export class ResultComponent implements OnInit {
 
     const confettiSettings = { target: 'canvas' };
     this.confetti = new ConfettiGenerator(confettiSettings);
-    this.confetti.render();
+    this.numberOfCorrectAnswers === 3 && this.confetti.render();
   };
 
   ngOnDestroy() {
